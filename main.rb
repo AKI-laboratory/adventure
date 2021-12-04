@@ -1,10 +1,10 @@
 require 'dxopal'
-require_remote 'field.rb'
 include DXOpal
 
+require_remote 'source/field.rb'
 require_remote 'source/chara.rb'
 
-Image.register(:player, 'images/player_2.png') 
+Image.register(:player, 'images/player_kotsugi.png') 
 
 Window.load_resources do
   Window.bgcolor = C_WHITE
@@ -16,7 +16,6 @@ Window.load_resources do
   field = Field.new
 
   Window.loop do
-    # Window.draw_font(0, 0, "Hello!", Font.default, color: C_WHITE)
     field.drawField
     chara.update
     chara.draw
