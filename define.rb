@@ -1,13 +1,13 @@
 require 'dxopal'
 include DXOpal
 
-CELL_WIDTH = 40
-CELL_HEIGHT = 40
+CELL_WIDTH = 32
+CELL_HEIGHT = 32
 CELL_NUM_X = 16
 CELL_NUM_Y = 16
 Window.bgcolor = C_BLUE
-Window.width=640
-Window.height=640
+Window.width = CELL_WIDTH*CELL_NUM_X
+Window.height = CELL_HEIGHT*CELL_NUM_Y
 
 class Sprite
   attr_accessor :width, :height
