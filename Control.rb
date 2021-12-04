@@ -2,6 +2,7 @@ require 'dxopal'
 include DXOpal
 require_remote 'define.rb'
 require_remote 'source/field.rb'
+require_remote 'source/object.rb'
 require_remote 'source/player.rb'
 
 Image.register(:player, 'images/player_kotsugi.png') 
@@ -13,6 +14,7 @@ class Control
   def initialize()
     @mode = :title
     @field = Field.new
+    @object = Object.new
     @player = Player.new(400, 500, Image[:player])
   end
 
@@ -25,6 +27,7 @@ class Control
 
   def game
     @field.drawField
+    @object.drawObject
     @player.update
     @player.draw
   end
