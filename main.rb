@@ -1,6 +1,6 @@
 require 'dxopal'
 include DXOpal
-require_remote 'Control.rb'
+require_remote 'source/Control.rb'
 require_remote 'source/field.rb'
 require_remote 'source/player.rb'
 
