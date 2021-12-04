@@ -5,6 +5,9 @@ CELL_WIDTH = 40
 CELL_HEIGHT = 40
 CELL_NUM_X = 16
 CELL_NUM_Y = 16
+Window.bgcolor = C_BLUE
+Window.width=640
+Window.height=640
 
 class Sprite
   attr_accessor :width, :height

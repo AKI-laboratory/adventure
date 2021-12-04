@@ -1,9 +1,11 @@
 require 'dxopal'
 include DXOpal
+require_remote 'Control.rb'
+
 Window.load_resources do
-  Window.bgcolor = C_BLACK
+  cont=Control.new
 
   Window.loop do
-    Window.draw_font(0, 0, "Hello!", Font.default, color: C_WHITE)
+    cont.update
   end
 end

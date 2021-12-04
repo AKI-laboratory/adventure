@@ -1,5 +1,6 @@
 require 'dxopal'
 include DXOpal
+require_remote 'define.rb'
 
 class Control
   attr_accessor :mode
