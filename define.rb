@@ -9,7 +9,7 @@ Window.bgcolor = C_BLUE
 Window.width = CELL_WIDTH*CELL_NUM_X
 Window.height = CELL_HEIGHT*CELL_NUM_Y
 
-class Sprite
+class Sprites < Sprite
   attr_accessor :width, :height
   alias init_origin initialize
 

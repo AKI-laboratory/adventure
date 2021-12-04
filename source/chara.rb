@@ -1,4 +1,4 @@
-class Chara < Sprite
+class Chara < Sprites
   def initialize(x, y, image)
     super(x, y, image)
   end
