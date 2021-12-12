@@ -13,7 +13,7 @@ class Control
   def initialize()
     @mode = :title
     @field = Field.new
-    @player = Player.new(400, 500, Image[:player])
+    @player = Player.new(400, 500, Image[:player], @field)
   end
 
   def title
