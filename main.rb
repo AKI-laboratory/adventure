@@ -1,6 +1,6 @@
 require 'dxopal'
 include DXOpal
-require_remote 'Control.rb'
+require_remote 'source/Control.rb'
 
 Window.load_resources do
   cont = Control.new

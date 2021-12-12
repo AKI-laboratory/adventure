@@ -8,7 +8,7 @@ class Field
       [10,10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10,10,10,10,10,10],
       [10,10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10,10,10,10],
       [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10,10],
-      [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10],
+      [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # center
       [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10,10,10],
       [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10,10,10,10,10],
@@ -29,8 +29,23 @@ class Field
     @layout.each_with_index do |line, id_l|
       line.each_with_index do |num, id|
         Window.draw(32 * id + scroll_x, 32 * id_l, @images[num])
-        Window.draw(32 * id + scroll_x, 32 * id_l, @images[num])
       end
+    end
+  end
+
+  def getFieldVal(x, y)
+    return @layout[y][x]
+  end
+
+  def can_walk(x,y)
+    _x = x/CELL_WIDTH
+    _y = y/CELL_HEIGHT
+
+    case getFieldVal(_x,_y)
+    when 10
+      false
+    else
+      true
     end
   end
 end

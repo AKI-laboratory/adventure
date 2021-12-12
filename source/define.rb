@@ -1,6 +1,3 @@
-require 'dxopal'
-include DXOpal
-
 CELL_WIDTH = 32
 CELL_HEIGHT = 32
 CELL_NUM_X = 26
