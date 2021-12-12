@@ -1,15 +1,13 @@
-require 'dxopal'
-include DXOpal
-require_remote 'define.rb'
+require_remote 'source/define.rb'
 require_remote 'source/field.rb'
 require_remote 'source/object.rb'
 require_remote 'source/player.rb'
 
-Image.register(:player, 'images/player_kotsugi.png') 
+Image.register(:player, 'image/player.png')
 
 class Control
-  TITLE = Image.load("image/title.png")
-  attr_accessor :mode
+  TITLE = Image.load("images/title.png")
+  attr_accessor :mode,:field,:object,:player
 
   def initialize()
     @mode = :title
@@ -20,6 +18,7 @@ class Control
 
   def title
     Window.draw(0,0,TITLE)
+    Window.draw_font(2,2,"#{CELL_WIDTH}",Font.default)
     if Input.key_push?(K_RETURN)
       self.mode = :game
     end
@@ -30,6 +29,7 @@ class Control
     @object.drawObject
     @player.update
     @player.draw
+
   end
 
   def update
