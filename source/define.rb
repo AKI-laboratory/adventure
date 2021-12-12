@@ -1,7 +1,7 @@
 CELL_WIDTH = 32
 CELL_HEIGHT = 32
-CELL_NUM_X = 25
-CELL_NUM_Y = 19
+CELL_NUM_X = 26
+CELL_NUM_Y = 17
 Window.bgcolor = C_BLUE
 Window.width = CELL_WIDTH*CELL_NUM_X
 Window.height = CELL_HEIGHT*CELL_NUM_Y

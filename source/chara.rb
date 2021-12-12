@@ -8,7 +8,7 @@ class Chara < Sprites
   end
 
   def collision(field)
-    field.can_walk(x,y)&&field.can_walk(x+CELL_WIDTH-1,y)&&field.can_walk(x,y+CELL_HEIGHT-1)&&field.can_walk(x+CELL_WIDTH-1,y+CELL_HEIGHT-1)
+    field.can_walk(x,y) && field.can_walk(x+CELL_WIDTH-1,y) && field.can_walk(x,y+CELL_HEIGHT-1) && field.can_walk(x+CELL_WIDTH-1,y+CELL_HEIGHT-1)
   end
 
   def move(walk_switch,field)
