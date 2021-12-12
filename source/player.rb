@@ -1,14 +1,13 @@
 require_remote 'source/chara.rb'
 class Player < Chara
   def update
-    if Input.key_down?(K_LEFT) && self.x > 0
-      self.move(-8, 0)
-    elsif Input.key_down?(K_RIGHT) && self.x < (Window.width - CELL_WIDTH)
-      self.move(8, 0)
-    elsif Input.key_down?(K_UP) && self.y > 0
-      self.move(0, -8)
-    elsif Input.key_down?(K_DOWN) && self.y < (Window.height - CELL_HEIGHT)
-      self.move(0, 8)
-    end
+    walk_switch = 0
+    walk_switch = 2 if Input.y > 0
+    walk_switch = 4 if Input.x < 0
+    walk_switch = 6 if Input.x > 0
+    walk_switch = 8 if Input.y < 0
+
+    move(walk_switch)
+    draw
   end
 end

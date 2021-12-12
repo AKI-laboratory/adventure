@@ -27,8 +27,6 @@ class Control
     field.drawField
     object.drawObject
     player.update
-    player.draw
-
   end
 
   def update
