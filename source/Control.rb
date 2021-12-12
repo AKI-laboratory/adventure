@@ -7,7 +7,7 @@ Image.register(:player, 'image/player.png')
 Image.register(:title, 'images/title.png')
 
 class Control
-  attr_accessor :mode,:field,:object,:player, :@map_start_x, :@is_scroll
+  attr_accessor :mode,:field,:object,:player, :map_start_x, :is_scroll
 
   def initialize()
     @mode = :title
