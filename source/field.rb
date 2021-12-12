@@ -47,4 +47,16 @@ class Field
   def getFieldVal(x, y)
     return @layout[y][x]
   end
+
+  def can_walk(x,y)
+    _x = x/CELL_WIDTH
+    _y = y/CELL_HEIGHT
+
+    case getFieldVal(_x,_y)
+    when 2
+      false
+    else
+      true
+    end
+  end
 end
