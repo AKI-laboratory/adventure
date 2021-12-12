@@ -1,3 +1,4 @@
+require_remote 'source/define.rb'
 class Chara < Sprites
   def initialize(x, y, image)
     super(x, y, image)
