@@ -3,7 +3,6 @@ class Player < Chara
   #コンストラクタ
   def initialize(x, y, image)
     super(x, y, image)
-
   end
 
   def update(field)
