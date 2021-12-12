@@ -10,10 +10,14 @@ Image.register(:player, 'images/player_kotsugi.png')
 class Control
   TITLE = Image.load("image/title.png")
   attr_accessor :mode
+  attr_accessor :map_start_x
+  attr_accessor :isScroll
 
   def initialize()
     @mode = :title
-    @field = Field.new
+    @map_start_x = 0
+    @isScroll = 0 # 0:stop, 1:left, 2:right
+    @field = Field.new(@map_start_x, @isScroll)
     @object = Object.new
     @player = Player.new(400, 500, Image[:player])
   end
@@ -26,9 +30,33 @@ class Control
   end
 
   def game
-    @field.drawField
-    @object.drawObject
-    @player.update
+    if @player.x >= (CELL_NUM_X - 1) * CELL_WIDTH
+      @isScroll = 1
+    elsif @player.x <= 0
+      @isScroll = 2
+    end
+    if @isScroll == 1
+      if @map_start_x > -(CELL_NUM_X - 1) * CELL_WIDTH
+        @map_start_x -= 8
+      else
+        @isScroll = 0
+        @map_start_x = 0
+        @player.x = 1
+      end
+    elsif @isScroll == 2
+      if @map_start_x < (CELL_NUM_X - 1) * CELL_WIDTH
+        @map_start_x += 8
+      else
+        @isScroll = 0
+        @map_start_x = 0
+        @player.x = (CELL_NUM_X - 1) * CELL_WIDTH - 1
+      end
+    end
+    @field.drawField(scroll_x:map_start_x)
+    if @isScroll == 0
+      @object.drawObject
+    end
+    @player.update(scroll:isScroll, scroll_x:map_start_x)
     @player.draw
   end
 
