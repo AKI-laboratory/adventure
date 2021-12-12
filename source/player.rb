@@ -18,6 +18,10 @@ class Player < Chara
       self.x += -8
     elsif scroll == 2
       self.x += 8
+    elsif scroll == 3
+      self.y += 8
+    elsif scroll == 4
+      self.y -= 8
     end
     draw
   end
