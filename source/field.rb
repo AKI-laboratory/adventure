@@ -1,6 +1,6 @@
 class Field
   def initialize
-    @field=[
+    @layout=[
       [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
       [2,2,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2],
       [2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2],
@@ -24,10 +24,12 @@ class Field
     @image_field = Image.load('images/ground.png')
     @image_sea = Image.load('images/sea.png')
     @image_load = Image.load('images/load.png')
+
+    p "constructed field"
   end
 
   def drawField
-    @field.each_with_index do |line, id_l|
+    @layout.each_with_index do |line, id_l|
       line.each_with_index do |num, id|
         case num
         when 1 then
@@ -42,4 +44,19 @@ class Field
     end
   end
 
+  def getFieldVal(x, y)
+    return @layout[y][x]
+  end
+
+  def can_walk(x,y)
+    _x = x/CELL_WIDTH
+    _y = y/CELL_HEIGHT
+
+    case getFieldVal(_x,_y)
+    when 2
+      false
+    else
+      true
+    end
+  end
 end

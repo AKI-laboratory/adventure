@@ -1,3 +1,4 @@
+require_remote 'source/field.rb'
 class Chara < Sprites
   attr_accessor :speed
 
@@ -6,23 +7,27 @@ class Chara < Sprites
     @speed = 5
   end
 
-  def move(walk_switch)
-    case walk_switch
-    when 2
-      if self.y < (Window.height - CELL_HEIGHT)
-        self.y += speed
+  def collision(field)
+    field.can_walk(x,y)&&field.can_walk(x+CELL_WIDTH-1,y)&&field.can_walk(x,y+CELL_HEIGHT-1)&&field.can_walk(x+CELL_WIDTH-1,y+CELL_HEIGHT-1)
+  end
+
+  def move(walk_switch,field)
+    speed.times do
+      _x = self.x
+      _y = self.y
+      case walk_switch
+      when 2
+        self.y += 1
+      when 4
+        self.x -= 1
+      when 6
+        self.x += 1
+      when 8
+        self.y -= 1
       end
-    when 4
-      if self.x > 0
-        self.x -= speed
-      end
-    when 6
-      if self.x < (Window.width - CELL_WIDTH)
-        self.x += speed
-      end
-    when 8
-      if self.y > 0
-        self.y -= speed
+      if !collision(field)
+        self.x = _x
+        self.y = _y
       end
     end
   end

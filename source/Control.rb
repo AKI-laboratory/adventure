@@ -12,8 +12,8 @@ class Control
   def initialize()
     @mode = :title
     @field = Field.new
-    @object = Object.new
     @player = Player.new(400, 500, Image[:player])
+    @object = Object.new
   end
 
   def title
@@ -26,7 +26,7 @@ class Control
   def game
     field.drawField
     object.drawObject
-    player.update
+    player.update(field)
   end
 
   def update
