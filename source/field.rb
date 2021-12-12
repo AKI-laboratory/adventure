@@ -39,7 +39,7 @@ class Field
   def drawField (scroll_x:0, scroll_y:0)
     @layout.each_with_index do |line, id_l|
       line.each_with_index do |num, id|
-        Window.draw(32 * id + scroll_x, 32 * id_l + scroll_y, images[num])
+        Window.draw(32 * id + scroll_x, 32 * id_l + scroll_y, @images[num])
       end
     end
   end
