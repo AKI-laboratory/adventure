@@ -27,6 +27,7 @@ class Player < Chara
     elsif scroll == 4
       self.y -= 8
     end
+
     draw
   end
 end
