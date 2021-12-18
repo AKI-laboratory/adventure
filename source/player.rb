@@ -13,7 +13,7 @@ class Player < Chara
     walk_switch = 8 if Input.y < 0
 
     move(walk_switch, field)
-    
+
     if scroll == 1
       self.x += -8
     elsif scroll == 2

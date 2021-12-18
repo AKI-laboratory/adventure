@@ -25,6 +25,7 @@ class Chara < Sprites
       when 8
         self.y -= 1
       end
+
       if !collision(field)
         self.x = _x
         self.y = _y
