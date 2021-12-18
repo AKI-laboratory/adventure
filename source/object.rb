@@ -19,3 +19,13 @@ class Block < Obj
     self.col = true
   end
 end
+class Key < Obj
+  def initialize(x, y, image)
+    super
+    self.col = false
+  end
+
+  def pick_up
+    self.vanish
+  end
+end

@@ -2,7 +2,7 @@ require_remote 'source/object.rb'
 
 Image.register(:tree, 'images/tree.png')
 Image.register(:block, 'images/block.png')
-#Image.register(:key, 'images/key.png')
+Image.register(:key, 'images/key.png')
 
 class ObjectField
   attr_accessor :obj
@@ -21,7 +21,7 @@ class ObjectField
         when 2
           obj << Block.new(_x, _y, Image[:block])
         when 3
-          #obj << Key.new(_x, _y, Image[:key])
+          obj << Key.new(_x, _y, Image[:key])
         end
       end
     end
