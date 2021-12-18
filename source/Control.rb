@@ -39,7 +39,7 @@ class Control
     @map_start_y = 0
     @is_scroll = 0 # 0:stop, 1:left, 2:right, 3:down, 4:up
     @field = Field.new(self.map_start_x, self.is_scroll)
-    @player = Player.new(400, 100, Image[:player])
+    @player = Player.new(400, 200, Image[:player])
     @objects = ObjectField.new(obj_data)
   end
 
