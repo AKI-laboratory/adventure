@@ -7,7 +7,7 @@ Image.register(:player, 'image/player.png')
 Image.register(:title, 'images/title.png')
 
 class Control
-  attr_accessor :mode, :field, :objects, :player, :map_num, :map_start_x, :map_start_y, :is_scroll
+  attr_accessor :mode, :state, :field, :objects, :player, :map_num, :map_start_x, :map_start_y, :is_scroll
 
   def initialize()
     obj_data = [
@@ -33,6 +33,7 @@ class Control
     ]
 
     @mode = :title
+    @state = :normal
     @map_num = 4
     @map_start_x = 0
     @map_start_y = 0
@@ -50,16 +51,6 @@ class Control
   end
 
   def XYScroll
-    if player.x >= (CELL_NUM_X - 1) * CELL_WIDTH  # right end
-      self.is_scroll = 1
-    elsif player.x <= 0 # left end
-      self.is_scroll = 2
-    elsif player.y <= 0 # upper end
-      self.is_scroll = 3
-    elsif player.y >= (CELL_NUM_Y - 1) * CELL_HEIGHT - 3 # lower end
-      self.is_scroll = 4
-    end
-
     if self.is_scroll == 1  # right -> left
       if self.map_start_x > -(CELL_NUM_X - 1) * CELL_WIDTH
         self.map_start_x -= 8
@@ -68,6 +59,7 @@ class Control
         self.map_start_x = 0
         player.x = 1
         self.map_num += 1
+        self.state = :normal
       end
     elsif self.is_scroll == 2 # left -> right
       if self.map_start_x < (CELL_NUM_X - 1) * CELL_WIDTH
@@ -77,6 +69,7 @@ class Control
         self.map_start_x = 0
         player.x = (CELL_NUM_X - 1) * CELL_WIDTH - 1
         self.map_num -= 1
+        self.state = :normal
       end
     elsif self.is_scroll == 3 # upper -> lower
       if self.map_start_y < (CELL_NUM_Y - 1) * CELL_HEIGHT
@@ -86,6 +79,7 @@ class Control
         self.map_start_y = 0
         player.y = (CELL_NUM_Y - 1) * CELL_HEIGHT - 4
         self.map_num -= MAP_SIZE
+        self.state = :normal
       end
     elsif self.is_scroll == 4 # lower -> upper
       if self.map_start_y > -(CELL_NUM_Y - 1) * CELL_HEIGHT
@@ -95,22 +89,43 @@ class Control
         self.map_start_y = 0
         player.y = 1
         self.map_num += MAP_SIZE
+        self.state = :normal
       end
     end
   end
 
   def game
-    self.XYScroll
+    self.state = :scroll
+    if player.x >= (CELL_NUM_X - 1) * CELL_WIDTH  # right end
+      self.is_scroll = 1
+    elsif player.x <= 0 # left end
+      self.is_scroll = 2
+    elsif player.y <= 0 # upper end
+      self.is_scroll = 3
+    elsif player.y >= (CELL_NUM_Y - 1) * CELL_HEIGHT - 3 # lower end
+      self.is_scroll = 4
+    else
+      self.state = :normal
+    end
+
     field.drawField(map_num:self.map_num, scroll_x:self.map_start_x, scroll_y:self.map_start_y)
 
-    if self.is_scroll == 0
-      objects.draw
-    end
+    objects.draw
     
     player.update(self.field, scroll:self.is_scroll)
   end
 
-  def update
+  def normal
     send(mode)
+  end
+
+  def scroll
+    self.XYScroll
+    field.drawField(map_num:self.map_num, scroll_x:self.map_start_x, scroll_y:self.map_start_y)
+    #player.draw
+  end
+
+  def update
+    send(state)
   end
 end
