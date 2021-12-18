@@ -127,7 +127,14 @@ class Control
 
     objects.draw
     
-    player.update(self.field, scroll:self.is_scroll)
+    player.update(self.field)
+
+    Sprite.check(player,objects.obj)
+    if player.c_flag
+      player.get(objects.obj.select { |o| !o.visible })
+      player.c_flag = false
+    end
+
   end
 
   def normal
@@ -137,7 +144,6 @@ class Control
   def scroll
     self.XYScroll
     field.drawField(map_num:self.map_num, scroll_x:self.map_start_x, scroll_y:self.map_start_y)
-    #player.draw
   end
 
   def update

@@ -14,8 +14,6 @@ class ObjectField
         _x = x * CELL_WIDTH
         _y = y * CELL_HEIGHT
         case num
-        when 0
-
         when 1
           obj << Tree.new(_x, _y, Image[:tree])
         when 2
