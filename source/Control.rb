@@ -84,6 +84,21 @@ class Control
     if @is_scroll == 0
       object.drawObject
     end
+
+    if Input.key_push?(K_B)
+      bomb = Bomb.new(player.x, player.y)
+      if player.bomb > 0
+        player.bomb -= 1
+        player.bombs[player.bomb] = bomb
+        p player.bombs
+      end
+    end
+    for b in player.bombs do
+      if b != nil
+        if b.update
+        end
+      end
+    end
     
     player.update(@field, scroll:@is_scroll)
   end

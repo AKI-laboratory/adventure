@@ -1,8 +1,12 @@
 require_remote 'source/chara.rb'
+require_remote 'source/bomb.rb'
 class Player < Chara
+  attr_accessor :bomb, :bombs
   #コンストラクタ
   def initialize(x, y, image)
     super(x, y, image)
+    @bomb = 3
+    @bombs = [nil, nil, nil]
   end
 
   def update(field, scroll:0)
