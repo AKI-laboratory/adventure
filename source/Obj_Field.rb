@@ -8,7 +8,7 @@ class ObjectField
   attr_accessor :obj
 
   def initialize(_objects)
-    @obj=[]
+    @obj = []
     _objects.each_with_index do |row, y|
       row.each_with_index do |num, x|
         _x = x * CELL_WIDTH
@@ -16,11 +16,11 @@ class ObjectField
         case num
         when 0
         when 1
-          obj < Tree(_x, _y, Image[:tree])
+          obj << Tree.new(_x, _y, Image[:tree])
         when 2
-          obj < Block(_x, _y, Image[:block])
+          obj << Block.new(_x, _y, Image[:block])
         when 3
-          obj < Key(_x, _y, Image[:key])
+          obj << Key.new(_x, _y, Image[:key])
         end
       end
     end
