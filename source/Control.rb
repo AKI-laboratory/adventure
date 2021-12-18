@@ -108,6 +108,8 @@ class Control
       self.state = :normal
     end
 
+    field.drawField(map_num:self.map_num, scroll_x:self.map_start_x, scroll_y:self.map_start_y)
+
     if Input.key_push?(K_B)
       bomb = Bomb.new(player.x, player.y)
       if player.bomb > 0
@@ -118,12 +120,9 @@ class Control
     end
     for b in player.bombs do
       if b != nil
-        if b.update
-        end
+        b.update
       end
     end
-
-    field.drawField(map_num:self.map_num, scroll_x:self.map_start_x, scroll_y:self.map_start_y)
 
     objects.draw
     
