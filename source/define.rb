@@ -2,6 +2,7 @@ CELL_WIDTH = 32
 CELL_HEIGHT = 32
 CELL_NUM_X = 26
 CELL_NUM_Y = 17
+MAP_SIZE = 3
 Window.bgcolor = C_BLUE
 Window.width = CELL_WIDTH*CELL_NUM_X
 Window.height = CELL_HEIGHT*CELL_NUM_Y
