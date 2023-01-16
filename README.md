@@ -27,4 +27,5 @@ $ dxopal update
 
 - [Opal](https://opalrb.com/)
 - [DXOpal demo](https://yhara.github.io/dxopal/index.html)
+- [Rubyで始めるゲームプログラミング - DXOpal編 -](https://magazine.rubyist.net/articles/0057/0057-GameProgramingWithDXOpal.html)
 - [DXOpalで作ったゲームを無料で公開する - Qiita](https://magazine.rubyist.net/articles/0057/0057-GameProgramingWithDXOpal.html)
