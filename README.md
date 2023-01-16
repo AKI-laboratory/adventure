@@ -1,5 +1,12 @@
 # adventure
 
+search a key!
+
+## how to play
+
+- cursor keys to move
+- key 'B' to put a bomb
+
 ## setup
 
 ```sh
